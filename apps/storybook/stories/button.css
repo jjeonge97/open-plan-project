@@ -1,0 +1,40 @@
+.custom-button {
+  display: inline-block;
+  cursor: pointer;
+  border: 0;
+  border-radius: 12px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 148%;
+  letter-spacing: -2%;
+  font-family: "Pretendard", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  width: 335px;
+  padding: 12px;
+  background: #111111;
+  color: #ffffff;
+  transition: background 0.15s ease, opacity 0.15s ease;
+
+  &:hover,
+  &:active {
+    opacity: 0.8;
+  }
+}
+
+/* 상태: hover / pressed */
+.custom-button:hover,
+.custom-button:active {
+  opacity: 0.8;
+}
+
+/* 사이즈: small */
+.custom-button--small {
+  width: 154px;
+  max-width: 154px;
+}
+
+@media (min-width: 768px) {
+  .op-zone--constrained .custom-button {
+    width: 154px; /* 클래스명 오타(custom-btn -> custom-button) 수정 */
+    max-width: 154px;
+  }
+}
