@@ -1,0 +1,12 @@
+{
+  "name": "open-plan",
+  "private": true,
+  "devDependencies": {
+    "turbo": "^2.5.8"
+  },
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build"
+  },
+  "packageManager": "pnpm@10.17.1"
+}
