@@ -8,5 +8,6 @@ export const usePhotoInfoQuery = (id: string) => {
     select: (data) => {
       return data.data;
     },
+    enabled: false,
   });
 };

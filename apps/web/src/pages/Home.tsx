@@ -3,13 +3,35 @@ import { Button } from '@open-plan/ui';
 import '@open-plan/ui/button.css';
 import Header from '@/components/Header';
 import { useNavigate } from 'react-router-dom';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
+import { usePhotoInfoQuery } from '@/queries/usePhotoInfoQuery';
+import { usePhotoStore } from '@/stores/photoStore';
 
 const Home: FC = () => {
   const navigate = useNavigate();
+  const { refetch } = usePhotoInfoQuery('0');
+  const photoInfo = usePhotoStore((state) => state.photoInfo);
+  const setPhotoInfo = usePhotoStore((state) => state.setPhotoInfo);
 
-  const onClickMoveToResult = () => {
-    navigate('/result');
+  useEffect(() => {
+    // 사진 한번이라도 조회 시 바로 result 페이지로 이동
+    if (photoInfo) {
+      console.log('사진 한번이라도 조회함');
+      navigate('/result');
+    }
+    console.log('사진 조회 한번도 안함');
+  }, []);
+
+  const onClickMoveToResult = async () => {
+    try {
+      const { data } = await refetch();
+      if (data) {
+        setPhotoInfo(data);
+        navigate('/result');
+      }
+    } catch (e) {
+      window.alert(e);
+    }
   };
 
   return (

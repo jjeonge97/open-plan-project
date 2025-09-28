@@ -4,12 +4,20 @@ import { Button } from '@open-plan/ui';
 import '@open-plan/ui/button.css';
 import Header from '@/components/Header';
 import { useNavigate } from 'react-router-dom';
-import { FC } from 'react';
-import { usePhotoInfoQuery } from '@/queries/usePhotoInfoQuery';
+import { FC, useEffect } from 'react';
+import { usePhotoStore } from '@/stores/photoStore';
 
 const Result: FC = () => {
   const navigate = useNavigate();
-  const { data } = usePhotoInfoQuery('0');
+  const photoInfo = usePhotoStore((state) => state.photoInfo);
+
+  useEffect(() => {
+    //조회 이력 없이 result 페이지 진입 시 home 페이지로 이동
+    if (!photoInfo) {
+      console.log('사진 조회 한적 없는데 result 페이지 진입');
+      setTimeout(() => navigate('/'), 1000);
+    }
+  }, []);
 
   const onClickMoveToHome = () => {
     navigate('/');
@@ -20,28 +28,28 @@ const Result: FC = () => {
       <Header />
       <Wrapper>
         <ImageWrapper>
-          <img src={data?.download_url} alt="img" />
+          <img src={photoInfo?.download_url} alt="img" />
         </ImageWrapper>
         <Content>
           <KeyValueCard
             firstKey="id"
-            firstValue={data?.id ?? ''}
+            firstValue={photoInfo?.id ?? ''}
             secondKey="author"
-            secondValue={data?.author ?? ''}
+            secondValue={photoInfo?.author ?? ''}
             isRow
           />
           <KeyValueCard
             firstKey="width"
-            firstValue={data?.width ?? ''}
+            firstValue={photoInfo?.width ?? ''}
             secondKey="height"
-            secondValue={data?.height ?? ''}
+            secondValue={photoInfo?.height ?? ''}
             isRow
           />
           <KeyValueCard
             firstKey="url"
-            firstValue={data?.url ?? ''}
+            firstValue={photoInfo?.url ?? ''}
             secondKey="download_url"
-            secondValue={data?.download_url ?? ''}
+            secondValue={photoInfo?.download_url ?? ''}
           />
           <Button label="이전" onClick={onClickMoveToHome} />
         </Content>
