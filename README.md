@@ -4,6 +4,11 @@
   메인(/)에서 조회 버튼을 누르면, 결과 페이지(/result)에서 이미지와 메타 정보를 카드 형태로 보여줍니다.
   공용 UI 컴포넌트는 @open-plan/ui 패키지로 분리했고, Storybook으로 상태별 문서를 제공합니다.
 
+## 🔗 링크
+
+- GitHub: https://github.com/jjeonge97/open-plan-project
+- 배포(Vercel): https://open-plan-project-web-blush.vercel.app
+
 ## ✨주요기능
 
 - Turborepo + pnpm 기반 모노레포
