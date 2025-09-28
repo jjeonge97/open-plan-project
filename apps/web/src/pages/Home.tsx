@@ -1,7 +1,7 @@
-import styled from "styled-components";
-import { Button } from "@open-plan/ui";
-import "@open-plan/ui/button.css";
-import Header from "@/components/Header";
+import styled from 'styled-components';
+import { Button } from '@open-plan/ui';
+import '@open-plan/ui/button.css';
+import Header from '@/components/Header';
 
 const Home = () => {
   return (

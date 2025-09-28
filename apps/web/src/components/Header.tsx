@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 const Header = () => {
   return <Container>지원자분 성함을 적어주세요</Container>;

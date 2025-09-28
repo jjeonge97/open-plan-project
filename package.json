@@ -1,27 +1,26 @@
 {
-  "name": "@open-plan/ui",
+  "name": "open-plan",
+  "private": true,
   "version": "0.1.0",
-  "private": false,
-  "type": "module",
-  "files": [
-    "dist",
-    "src/styles.css"
-  ],
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    },
-    "./styles.css": "./src/styles.css"
-  },
-  "peerDependencies": {
-    "react": ">=18",
-    "react-dom": ">=18"
-  },
+  "packageManager": "pnpm@10.17.1",
   "scripts": {
-    "build": "tsup src/index.tsx --format=esm,cjs --dts --clean"
+    "dev": "turbo dev",
+    "build": "tsup src/index.tsx --format=esm,cjs --dts --clean",
+    "lint": "turbo run lint",
+    "lint:fix": "turbo run lint:fix",
+    "format": "prettier -w .",
+    "format:check": "prettier -c ."
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.36.0",
+    "eslint": "^9.36.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-import-resolver-typescript": "^4.4.4",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "prettier": "^3.6.2",
+    "turbo": "^2.5.8",
+    "typescript-eslint": "^8.44.1"
   }
 }

@@ -1,5 +1,5 @@
-import { FC } from "react";
-import styled from "styled-components";
+import { FC } from 'react';
+import styled from 'styled-components';
 
 interface Props {
   firstKey: string;
@@ -12,12 +12,12 @@ interface Props {
 const KeyValueCard: FC<Props> = (props) => {
   const { firstKey, firstValue, secondKey, secondValue, isRow = false } = props;
   return (
-    <Container className={isRow ? "isRow" : ""}>
-      <Wrapper className={isRow ? "isRow" : ""}>
+    <Container className={isRow ? 'isRow' : ''}>
+      <Wrapper className={isRow ? 'isRow' : ''}>
         <span>{firstKey}</span>
         <ValueText>{firstValue}</ValueText>
       </Wrapper>
-      <Wrapper className={isRow ? "isRow" : ""}>
+      <Wrapper className={isRow ? 'isRow' : ''}>
         <span>{secondKey}</span>
         <ValueText>{secondValue}</ValueText>
       </Wrapper>

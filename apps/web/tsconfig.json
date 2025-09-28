@@ -11,7 +11,7 @@
     "skipLibCheck": true,
     "types": ["vite/client"]
   },
-  "include": ["src", "vite-env.d.ts"],
+  "include": ["src", "vite-env.d.ts"]
   // "files": [],
   // "references": [
   //   { "path": "./tsconfig.app.json" },

@@ -1,8 +1,8 @@
-import KeyValueCard from "@/components/KeyValueCard";
-import styled from "styled-components";
-import { Button } from "@open-plan/ui";
-import "@open-plan/ui/button.css";
-import Header from "@/components/Header";
+import KeyValueCard from '@/components/KeyValueCard';
+import styled from 'styled-components';
+import { Button } from '@open-plan/ui';
+import '@open-plan/ui/button.css';
+import Header from '@/components/Header';
 
 const Result = () => {
   return (
@@ -46,7 +46,8 @@ const Result = () => {
 export default Result;
 
 const Container = styled.div`
-  background: linear-gradient(120deg, #ffffff 0%, rgba(255, 255, 255, 0) 55%),
+  background:
+    linear-gradient(120deg, #ffffff 0%, rgba(255, 255, 255, 0) 55%),
     linear-gradient(
       165deg,
       rgba(0, 0, 0, 0.01) 0%,
