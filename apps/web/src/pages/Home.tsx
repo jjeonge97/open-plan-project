@@ -1,11 +1,12 @@
 import styled from "styled-components";
 import { Button } from "@open-plan/ui";
 import "@open-plan/ui/button.css";
+import Header from "@/components/Header";
 
 const Home = () => {
   return (
     <Container>
-      <Header>지원지분 성함을 적어주세요</Header>
+      <Header />
       <Content>
         <Text>
           안녕하세요
@@ -28,12 +29,6 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   height: 100%;
-`;
-
-const Header = styled.div`
-  font-size: 15px;
-  color: #1a1a1a;
-  padding: 17px 20px;
 `;
 
 const Content = styled.div`
