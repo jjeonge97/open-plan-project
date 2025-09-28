@@ -4,9 +4,12 @@ import { Button } from '@open-plan/ui';
 import '@open-plan/ui/button.css';
 import Header from '@/components/Header';
 import { useNavigate } from 'react-router-dom';
+import { FC } from 'react';
+import { usePhotoInfoQuery } from '@/queries/usePhotoInfoQuery';
 
-const Result = () => {
+const Result: FC = () => {
   const navigate = useNavigate();
+  const { data } = usePhotoInfoQuery('0');
 
   const onClickMoveToHome = () => {
     navigate('/');
@@ -17,31 +20,28 @@ const Result = () => {
       <Header />
       <Wrapper>
         <ImageWrapper>
-          <img
-            src="https://images.unsplash.com/flagged/1/apple-gear-looking-pretty.jpg?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            alt="img"
-          />
+          <img src={data?.download_url} alt="img" />
         </ImageWrapper>
         <Content>
           <KeyValueCard
             firstKey="id"
-            firstValue="0"
+            firstValue={data?.id ?? ''}
             secondKey="author"
-            secondValue="Alejandro Escamilla"
+            secondValue={data?.author ?? ''}
             isRow
           />
           <KeyValueCard
             firstKey="width"
-            firstValue="5,000"
+            firstValue={data?.width ?? ''}
             secondKey="height"
-            secondValue="3,333"
+            secondValue={data?.height ?? ''}
             isRow
           />
           <KeyValueCard
             firstKey="url"
-            firstValue="https://unsplash.com/photos/yC-Yzbqy7PY"
+            firstValue={data?.url ?? ''}
             secondKey="download_url"
-            secondValue="https://picsum.photos/id/0/5000/3333"
+            secondValue={data?.download_url ?? ''}
           />
           <Button label="이전" onClick={onClickMoveToHome} />
         </Content>

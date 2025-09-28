@@ -3,8 +3,9 @@ import { Button } from '@open-plan/ui';
 import '@open-plan/ui/button.css';
 import Header from '@/components/Header';
 import { useNavigate } from 'react-router-dom';
+import { FC } from 'react';
 
-const Home = () => {
+const Home: FC = () => {
   const navigate = useNavigate();
 
   const onClickMoveToResult = () => {

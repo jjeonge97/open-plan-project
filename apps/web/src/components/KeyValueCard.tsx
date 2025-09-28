@@ -3,9 +3,9 @@ import styled from 'styled-components';
 
 interface Props {
   firstKey: string;
-  firstValue: string;
+  firstValue: string | number;
   secondKey: string;
-  secondValue: string;
+  secondValue: string | number;
   isRow?: boolean;
 }
 
