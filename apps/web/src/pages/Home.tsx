@@ -2,8 +2,15 @@ import styled from 'styled-components';
 import { Button } from '@open-plan/ui';
 import '@open-plan/ui/button.css';
 import Header from '@/components/Header';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+  const navigate = useNavigate();
+
+  const onClickMoveToResult = () => {
+    navigate('/result');
+  };
+
   return (
     <Container>
       <Header />
@@ -15,7 +22,7 @@ const Home = () => {
         </Text>
       </Content>
       <ButtonWrapper>
-        <Button label="다음" />
+        <Button label="다음" onClick={onClickMoveToResult} />
       </ButtonWrapper>
     </Container>
   );

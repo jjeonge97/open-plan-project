@@ -3,8 +3,15 @@ import styled from 'styled-components';
 import { Button } from '@open-plan/ui';
 import '@open-plan/ui/button.css';
 import Header from '@/components/Header';
+import { useNavigate } from 'react-router-dom';
 
 const Result = () => {
+  const navigate = useNavigate();
+
+  const onClickMoveToHome = () => {
+    navigate('/');
+  };
+
   return (
     <Container>
       <Header />
@@ -36,7 +43,7 @@ const Result = () => {
             secondKey="download_url"
             secondValue="https://picsum.photos/id/0/5000/3333"
           />
-          <Button label="이전" />
+          <Button label="이전" onClick={onClickMoveToHome} />
         </Content>
       </Wrapper>
     </Container>
@@ -95,7 +102,7 @@ const Content = styled.div`
   box-sizing: border-box;
   margin-bottom: 60px;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1440px) {
     margin: 0;
   }
 `;
