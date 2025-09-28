@@ -18,22 +18,3 @@
     opacity: 0.8;
   }
 }
-
-/* 상태: hover / pressed */
-.custom-button:hover,
-.custom-button:active {
-  opacity: 0.8;
-}
-
-/* 사이즈: small */
-.custom-button--small {
-  width: 154px;
-  max-width: 154px;
-}
-
-@media (min-width: 768px) {
-  .custom-button {
-    width: 154px;
-    max-width: 154px;
-  }
-}

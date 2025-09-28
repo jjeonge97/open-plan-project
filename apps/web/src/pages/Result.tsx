@@ -12,9 +12,7 @@ const Result: FC = () => {
   const photoInfo = usePhotoStore((state) => state.photoInfo);
 
   useEffect(() => {
-    //조회 이력 없이 result 페이지 진입 시 home 페이지로 이동
     if (!photoInfo) {
-      console.log('사진 조회 한적 없는데 result 페이지 진입');
       setTimeout(() => navigate('/'), 1000);
     }
   }, []);
@@ -51,7 +49,7 @@ const Result: FC = () => {
             secondKey="download_url"
             secondValue={photoInfo?.download_url ?? ''}
           />
-          <Button label="이전" onClick={onClickMoveToHome} />
+          <Button children="이전" onClick={onClickMoveToHome} />
         </Content>
       </Wrapper>
     </Container>
@@ -74,6 +72,12 @@ const Container = styled.div`
   overflow-y: auto;
   display: flex;
   flex-direction: column;
+
+  @media (min-width: 768px) {
+    button {
+      width: 154px;
+    }
+  }
 `;
 
 const Wrapper = styled.div`

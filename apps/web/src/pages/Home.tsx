@@ -3,35 +3,45 @@ import { Button } from '@open-plan/ui';
 import '@open-plan/ui/button.css';
 import Header from '@/components/Header';
 import { useNavigate } from 'react-router-dom';
-import { FC, useEffect } from 'react';
+import { FC, useEffect, useState } from 'react';
 import { usePhotoInfoQuery } from '@/queries/usePhotoInfoQuery';
 import { usePhotoStore } from '@/stores/photoStore';
+import useDebounce from '@/hooks/useDebounce';
+import Lottie from 'lottie-react';
+import LottieImg from '../assets/loadingLottie.json';
 
 const Home: FC = () => {
   const navigate = useNavigate();
   const { refetch } = usePhotoInfoQuery('0');
   const photoInfo = usePhotoStore((state) => state.photoInfo);
   const setPhotoInfo = usePhotoStore((state) => state.setPhotoInfo);
+  const [isWaiting, setIsWaiting] = useState(false);
 
   useEffect(() => {
-    // 사진 한번이라도 조회 시 바로 result 페이지로 이동
     if (photoInfo) {
-      console.log('사진 한번이라도 조회함');
       navigate('/result');
     }
-    console.log('사진 조회 한번도 안함');
   }, []);
 
-  const onClickMoveToResult = async () => {
-    try {
-      const { data } = await refetch();
-      if (data) {
-        setPhotoInfo(data);
-        navigate('/result');
+  const debouncedGo = useDebounce(() => {
+    (async () => {
+      try {
+        const { data } = await refetch(); // fresh 데이터
+        if (data) {
+          setPhotoInfo(data);
+          navigate('/result');
+        }
+      } catch (e) {
+        window.alert(e);
+      } finally {
+        setIsWaiting(false);
       }
-    } catch (e) {
-      window.alert(e);
-    }
+    })();
+  }, 500);
+
+  const onClickMoveToResult = () => {
+    setIsWaiting(true);
+    debouncedGo();
   };
 
   return (
@@ -45,7 +55,20 @@ const Home: FC = () => {
         </Text>
       </Content>
       <ButtonWrapper>
-        <Button label="다음" onClick={onClickMoveToResult} />
+        <Button
+          children={
+            isWaiting ? (
+              <Lottie
+                animationData={LottieImg}
+                autoPlay
+                style={{ height: 25 }}
+              />
+            ) : (
+              '다음'
+            )
+          }
+          onClick={onClickMoveToResult}
+        />
       </ButtonWrapper>
     </Container>
   );
