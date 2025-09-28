@@ -36,6 +36,7 @@ const Container = styled.div`
   background: #fff;
   width: 100%;
   box-sizing: border-box;
+  font-weight: 500;
 
   @media (min-width: 768px) {
     &.isRow {

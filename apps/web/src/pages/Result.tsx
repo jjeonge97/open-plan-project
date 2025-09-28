@@ -23,7 +23,7 @@ const Result: FC = () => {
 
   return (
     <Container>
-      <Header />
+      <Header color="#ffffff" />
       <Wrapper>
         <ImageWrapper>
           <img src={photoInfo?.download_url} alt="img" />
@@ -62,7 +62,7 @@ const Container = styled.div`
   background:
     linear-gradient(120deg, #ffffff 0%, rgba(255, 255, 255, 0) 55%),
     linear-gradient(
-      165deg,
+      270deg,
       rgba(0, 0, 0, 0.01) 0%,
       rgba(0, 0, 0, 0.3) 75%,
       #111111 100%

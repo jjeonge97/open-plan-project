@@ -1,14 +1,19 @@
+import { FC } from 'react';
 import styled from 'styled-components';
 
-const Header = () => {
-  return <Container>지원자분 성함을 적어주세요</Container>;
+interface Props {
+  color?: string;
+}
+
+const Header: FC<Props> = ({ color = '#1a1a1a' }) => {
+  return <Container color={color}>지원자분 성함을 적어주세요</Container>;
 };
 
 export default Header;
 
-const Container = styled.div`
+const Container = styled.div<{ color: string }>`
   font-size: 15px;
-  color: #1a1a1a;
   padding: 17px 20px;
   text-align: center;
+  color: ${({ color }) => color};
 `;
