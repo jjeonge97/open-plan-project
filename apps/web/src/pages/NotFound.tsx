@@ -13,7 +13,7 @@ const NotFound = () => {
   return (
     <Container>
       <span>페이지가 존재하지 않습니다.</span>
-      <Button label="메인으로" onClick={onClickToMoveMain} />
+      <Button children="메인으로" onClick={onClickToMoveMain} />
     </Container>
   );
 };
